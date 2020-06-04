@@ -1,0 +1,13 @@
+body{
+    background: url('../img/back2.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    min-height: 1000%;
+    margin-left: 10px;
+    overflow: hidden;
+    overflow-x: hidden;
+    margin: 0px;
+    padding: 0px;
+    opacity:0.7;
+    
+}

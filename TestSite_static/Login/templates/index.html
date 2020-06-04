@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <script type="text/javascript">
+        function validate(){
+            var Firstname=document.getElementById('fname');
+            var Lastname=document.getElementById('lname');
+            var Username=document.getElementById('uname');
+            var Email=document.getElementById('email');
+            var password=document.getElementById('pwd');
+            var confpass=document.getElementById('confpwd');
+            var pattern= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(Firstname.value.trim() == '' || Lastname.value.trim() == '' || Username.value.trim() == '' || Email.value.trim() == '' || password.value.trim() == '' || confpass.value.trim() == ''){
+                alert("Please enter all the details");
+                return false;
+            }
+            else if(password.value.trim().length<=5){
+                alert("Password too short");
+                return false;
+            }
+            else if(!(Email.value.match(pattern))){
+                alert("Email entered incorrectly");
+                return false;
+           }
+            else if(password.value.trim() != confpass.value.trim()){
+                alert("Password and Confirm Password must be same");
+                return false;
+            }
+           
+            else{
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="row" style="margin-left: 30px;margin-top: 10px;">
+        <div>
+            <h5 style="color: white;">Already a user?</h5>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary" onClick="location.href='login'" style="margin-left: 15px;">Login</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5 m-auto">  
+            <div class="card mt-1 bg-dark">
+                <div class="card-title text-center mt-3" >
+                    <img src="{% static 'img/login.png' %}" width="100px" height="100px">
+                </div>
+                <div class="card-body">
+                    <form action="signup" enctype="multipart/form-data" method="POST" onsubmit="return validate()">
+                        {%csrf_token%}
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user fa-1x"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control py-2" placeholder="Firstname" name="fname" id="fname">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user fa-1x"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control py-2" placeholder="Lastname" name="lname" id="lname">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-book fa-1x"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control py-2" placeholder="Username" name="uname" id="uname">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-book fa-1x"></i>
+                                </span>
+                            </div>
+                            <input type="email" class="form-control py-2" placeholder="Email" name="email" id="email">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-lock fa-1x"></i>
+                                </span>
+                            </div>
+                            <input type="password" class="form-control py-2" placeholder="Password" name="pwd" id="pwd">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-lock fa-1x"></i>
+                                </span>
+                            </div>
+                            <input type="password" class="form-control py-2" placeholder="Comfirm Password" name="confpwd" id="confpwd">
+                        </div>
+                        <p style="color: white;font-size:18px;">Profile Pic <input type="file" accept="images/*" name="document" required>
+                        <div class="text-center">
+                        <button class="btn btn-outline-primary btn-lg text-center">SignUp</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

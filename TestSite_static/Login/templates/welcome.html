@@ -1,0 +1,36 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+</head>
+<body>
+    <div class="row">
+        <div class="col-lg-5 m-auto">
+            <div class="text-center" style="font-size: 35px;color:white;margin-top:55px;">Welcome {{data.first_name}}</div>
+            <div class="card mt-3 bg-dark">
+                <div class="card-title text-center mt-3" >
+                    
+                </div>
+                <div class="card-body text-center">
+                    <img src= "{% static imageurl.profile_pic %}" class="text-center" style="border-radius: 50%;" height="180px" width="180px"><br><br>
+                    <b style="color:white;font-size:25px;">Firstname: {{data.first_name}}</b><br><br>
+                    <b style="color:white;font-size:25px;">Lastname: {{data.last_name}}</b><br><br>
+                    <b style="color:white;font-size:25px;">Email: {{data.email}}</b>
+                </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

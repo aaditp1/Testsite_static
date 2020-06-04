@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <script>
+        function validate(){
+        var username=document.getElementById('uname');
+        var password=document.getElementById('pass');
+        if(username.value.trim()=='' || password.value.trim()==''){
+            alert('Please fill all the credentials to login');
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="row">
+        
+        <div class="col-lg-5 m-auto">
+            <div><h1 style="color:white;" class="text-center">LOGIN</h1></div>
+            <div class="card mt-5 bg-dark">
+                <div class="card-title text-center mt-3" >
+                    <img src="{% static 'img/login.png' %}" width="150px" height="150px">
+                </div>
+                <div class="card-body">
+                    <form action="login" enctype="multipart/form-data" method="POST" onsubmit="return validate()">
+                        {%csrf_token%}
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-book fa-1x"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control py-2" placeholder="Username" id="uname" name="un">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-lock fa-1x"></i>
+                                </span>
+                            </div>
+                            <input type="password" class="form-control py-2" placeholder="Password" id="pass" name="pwd">
+                        </div>
+                    
+                        <div class="text-center">
+                        <button class="btn btn-outline-primary btn-lg text-center">Login</button>
+                        </div>
+                        <div style="color:white;">
+                            {% for message in messages%}
+                                {{message}}
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
