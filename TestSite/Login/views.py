@@ -56,12 +56,11 @@ def Signup(request):
 
         )
         email_message.send()
-        #sp.save()
+    
 
         uploaded_file=request.FILES['document']
         fs=FileSystemStorage()
         fs.save(f"{user.first_name}.jpg",uploaded_file)
-        #upload_to_aws(uploaded_file,fn)
         return render(request,'Linksend.html')
     else:
 
